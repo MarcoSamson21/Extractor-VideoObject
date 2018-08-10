@@ -2,7 +2,10 @@
  * mmd.cpp
  *
  *  Created on: Sep 30, 2013
- *      Author: alucard
+ *      Author: Tomasz Posłuszny
+ *
+ *      Copyright. All rights reserved.
+ *
  */
 
 #include "FrameGrabber.hpp"
@@ -33,16 +36,12 @@ int main(int argc, char* argv[])
 		if (!grabber->initialize(0))
 			return -1;
 
-	/*FrameGrabber::current_frame = std::make_shared<Mat>(cap.get(CAP_PROP_FRAME_WIDTH),
-			cap.get(CAP_PROP_FRAME_HEIGHT),
-			cap.get(CAP_PROP_FORMAT));*/
-
 	namedWindow( "input", WINDOW_AUTOSIZE );
 	namedWindow( "output", WINDOW_AUTOSIZE );
 	moveWindow("input", 0, 0);
 	moveWindow("output", 800, 0);
 
-	// processing chain
+	// processing chain, here change between different available chains
 	std::shared_ptr<ProcessingChain> moe = std::make_shared<GrabCutMovingObjectExtracting>("input");
 
 	// main loop

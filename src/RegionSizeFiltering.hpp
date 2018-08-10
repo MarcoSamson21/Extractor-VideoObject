@@ -2,15 +2,21 @@
  * RegionSizeFiltering.hpp
  *
  *  Created on: Nov 10, 2014
- *      Author: alucard
+ *      Author: Tomasz Posłuszny
+ *
+ *      Copyright. All rights reserved.
+ *
  */
-
 #ifndef REGIONSIZEFILTERING_HPP_
 #define REGIONSIZEFILTERING_HPP_
 
 #include "Common.hpp"
 #include "ImageProcessor.hpp"
 
+/*
+ * INPUT: raw moving are mask
+ * OUTPUT: moving area mask with filtered small regions
+ */
 class RegionSizeFiltering : public ImageProcessor {
 public:
 	RegionSizeFiltering(int min_white, int min_black);

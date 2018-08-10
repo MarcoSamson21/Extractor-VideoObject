@@ -2,7 +2,10 @@
  * Common.h
  *
  *  Created on: Dec 27, 2013
- *      Author: alucard
+ *      Author: Tomasz Posłuszny
+ *
+ *      Copyright. All rights reserved.
+ *
  */
 
 #ifndef COMMON_H_
@@ -26,9 +29,11 @@
 #include <set>
 
 // file operations
+#ifdef __linux__
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#endif
 
 #include <opencv2/opencv.hpp>
 
@@ -36,6 +41,7 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/video/tracking.hpp>
+#include <opencv2/videoio.hpp>
 #include <opencv2/video/background_segm.hpp>
 #include <opencv2/opencv.hpp>
 #include <opencv2/core/utility.hpp>
@@ -53,6 +59,7 @@ enum Label
 	LABEL_A = 100,
 	LABEL_B = 101,
 	LABEL_C = 102,
+	BINARY_HALF = 127,
 	BINARY_ONE = 255
 };
 

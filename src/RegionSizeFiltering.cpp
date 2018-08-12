@@ -42,6 +42,7 @@ void RegionSizeFiltering::process_implementation(Mat &a, void* data)
 	labels.at<int>(0, 0) = lab;
 	m_sizes[lab]++;
 
+	// simplified fast scanning on binary image
 	for (i = 1; i < a.rows; i++) {
 		if (a.at<uchar>(i-1, 0) != a.at<uchar>(i, 0))
 			lab++;
@@ -132,7 +133,7 @@ void RegionSizeFiltering::process_implementation(Mat &a, void* data)
 */
 	// remove small black regions
 	for (i = 1; i <= lab; i++) {
-		if (rv[i]) {
+		if (rv[i] && m_sizes[i] > m_min_white) {
 			for (j = 0; j < ng[i].size(); j++) {
 				const int& k = ng[i][j];
 				if (m_sizes[k] < m_min_black) {
